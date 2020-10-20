@@ -31,7 +31,7 @@ var (
 	//goaction:description Print Goreadme debug output. Set to any non empty value for true.
 	_ = os.Getenv("debug")
 	//goaction:description Email for commit message.
-	//goaction:default posener@gmail.com
+	// goaction:default posener@gmail.com
 	email = os.Getenv("email")
 	//goaction:description Github token for PR comments. Optional.
 	githubToken = os.Getenv("github-token")
@@ -39,6 +39,7 @@ var (
 
 func init() {
 	flag.StringVar(&cfg.ImportPath, "import-path", "", "Override package import path.")
+	flag.StringVar(&cfg.DestinationPath, "destination-path", "", "Override package destination path.")
 	flag.StringVar(&cfg.Title, "title", "", "Override readme title. Default is package name.")
 	flag.BoolVar(&cfg.RecursiveSubPackages, "recursive", false, "Load docs recursively.")
 	flag.BoolVar(&cfg.Functions, "functions", false, "Write functions section.")
@@ -69,6 +70,26 @@ Flags:
 }
 
 func main() {
+
+	if cfg.DestinationPath != "" {
+		path = cfg.DestinationPath
+		var err error
+		fmt.Println(filepath.Dir(path))
+		if _, err := os.Stat(filepath.Dir(path)); os.IsNotExist(err) {
+			// path/to/whatever does not exist
+			err := os.MkdirAll(filepath.Dir(path), 0755)
+			if err != nil {
+				log.Fatalf("Failed creating folders %s: %s", path, err)
+			}
+		}
+
+		out, err = os.Create(path)
+		if err != nil {
+			log.Fatalf("Failed opening file %s: %s", path, err)
+		}
+		defer out.Close()
+	}
+
 	// Steps to do only in Github Action mode.
 	if path != "" {
 		// Setup output file.
@@ -122,6 +143,16 @@ func main() {
 }
 
 func pkg(args []string) string {
+
+	if cfg.ImportPath != "" {
+		path, err := filepath.Abs("./")
+		if err != nil {
+			log.Fatal(err)
+		}
+		gosrc.SetLocalDevMode(path)
+		return cfg.ImportPath
+	}
+
 	if len(args) > 0 {
 		return args[0]
 	}

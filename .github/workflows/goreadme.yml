@@ -12,6 +12,7 @@ jobs:
         - name: Update readme according to Go doc
           uses: ./
           with:
+            readme-file: docs/README.md
             recursive: true
             badge-travisci: true
             badge-codecov: true
