@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/posener/goreadme.svg?branch=master)](https://travis-ci.org/posener/goreadme)
 [![codecov](https://codecov.io/gh/posener/goreadme/branch/master/graph/badge.svg)](https://codecov.io/gh/posener/goreadme)
-[![GoDoc](https://img.shields.io/badge/pkg.go.dev-doc-blue)](http://pkg.go.dev/github.com/posener/goreadme)
+[![GoDoc](https://img.shields.io/badge/pkg.go.dev-doc-blue)](http://pkg.go.dev/github.com/ldsec/goreadme)
 
 Package goreadme generates readme markdown file from go doc.
 
@@ -46,7 +46,7 @@ jobs:
 Use as a command line tool
 
 ```go
-$ GO111MODULE=on go get github.com/posener/goreadme/cmd/goreadme
+$ GO111MODULE=on go get github.com/ldsec/goreadme/cmd/goreadme
 $ goreadme -h
 ```
 
@@ -76,7 +76,7 @@ func main() {
 
 * Inline code is marked with `backticks`.
 
-* URLs will just automatically be converted to links: [https://github.com/posener/goreadme](https://github.com/posener/goreadme)
+* URLs will just automatically be converted to links: [https://github.com/ldsec/goreadme](https://github.com/ldsec/goreadme)
 
 Additionally, the syntax was extended to include some more markdown features while keeping the Go
 doc readable:
@@ -95,7 +95,7 @@ doc readable:
 * A repository file can be linked when providing a path that start with `[./](./)`: [./goreadme.go](./goreadme.go).
 
 * A link can have a link text by prefixing it with parenthesised text:
-[goreadme page](https://github.com/posener/goreadme).
+[goreadme page](https://github.com/ldsec/goreadme).
 
 * A link to repository file and can have a link text: [goreadme main file](./goreamde.go).
 
@@ -108,4 +108,4 @@ doc readable:
 * [cmd/goreadme](./cmd/goreadme): Goreadme command line tool and Github action
 
 ---
-Readme created from Go doc with [goreadme](https://github.com/posener/goreadme)
+Readme created from Go doc with [goreadme](https://github.com/ldsec/goreadme)

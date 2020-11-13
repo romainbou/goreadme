@@ -37,7 +37,7 @@
 //
 // Use as a command line tool
 //
-// 	$ GO111MODULE=on go get github.com/posener/goreadme/cmd/goreadme
+// 	$ GO111MODULE=on go get github.com/ldsec/goreadme/cmd/goreadme
 // 	$ goreadme -h
 //
 // Why Should You Use It
@@ -64,7 +64,7 @@
 //
 // * Inline code is marked with `backticks`.
 //
-// * URLs will just automatically be converted to links: https://github.com/posener/goreadme
+// * URLs will just automatically be converted to links: https://github.com/ldsec/goreadme
 //
 // Additionally, the syntax was extended to include some more markdown features while keeping the Go
 // doc readable:
@@ -81,7 +81,7 @@
 // * A repository file can be linked when providing a path that start with `./`: ./goreadme.go.
 //
 // * A link can have a link text by prefixing it with parenthesised text:
-// (goreadme page) https://github.com/posener/goreadme.
+// (goreadme page) https://github.com/ldsec/goreadme.
 //
 // * A link to repository file and can have a link text: (goreadme main file) ./goreamde.go.
 //
@@ -103,7 +103,7 @@ import (
 
 	"github.com/golang/gddo/doc"
 	"github.com/pkg/errors"
-	"github.com/posener/goreadme/internal/template"
+	"github.com/ldsec/goreadme/internal/template"
 )
 
 // New returns a GoReadme object with a custom client.
@@ -153,7 +153,7 @@ type Config struct {
 }
 
 // Create writes the content of readme.md to w, with the default client.
-// name should be a Go repository name, such as "github.com/posener/goreadme".
+// name should be a Go repository name, such as "github.com/ldsec/goreadme".
 func Create(ctx context.Context, name string, w io.Writer) error {
 	g := GoReadme{client: http.DefaultClient}
 	return g.Create(ctx, name, w)
@@ -166,7 +166,7 @@ func (r GoReadme) WithConfig(cfg Config) *GoReadme {
 }
 
 // Create writes the content of readme.md to w, with r's HTTP client.
-// name should be a Go repository name, such as "github.com/posener/goreadme".
+// name should be a Go repository name, such as "github.com/ldsec/goreadme".
 func (r *GoReadme) Create(ctx context.Context, name string, w io.Writer) error {
 	p, err := r.get(ctx, name)
 	if err != nil {
