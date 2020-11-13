@@ -8,7 +8,7 @@ import (
 	"text/template"
 
 	"github.com/golang/gddo/doc"
-	"github.com/posener/goreadme/internal/markdown"
+	"github.com/ldsec/goreadme/internal/markdown"
 )
 
 // Execute is used to execute the README.md template.
@@ -92,7 +92,7 @@ var main = template.Must(base.Parse(`# {{.Package.Name}}
 {{ end }}
 {{ if .Config.Credit }}
 ---
-Readme created from Go doc with [goreadme](https://github.com/posener/goreadme)
+Readme created from Go doc with [goreadme](https://github.com/ldsec/goreadme)
 {{ end }}
 `))
 

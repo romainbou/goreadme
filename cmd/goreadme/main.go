@@ -10,10 +10,10 @@ import (
 	"path/filepath"
 
 	"github.com/golang/gddo/gosrc"
+	"github.com/ldsec/goreadme"
 	"github.com/posener/goaction"
 	"github.com/posener/goaction/actionutil"
 	"github.com/posener/goaction/log"
-	"github.com/posener/goreadme"
 	"golang.org/x/oauth2"
 )
 
@@ -197,10 +197,10 @@ func pr(diff string) {
 		return
 	}
 
-	body := "[goreadme](https://github.com/posener/goreadme) will not make any changes in this PR"
+	body := "[goreadme](https://github.com/ldsec/goreadme) will not make any changes in this PR"
 	if diff != "" {
 		body = fmt.Sprintf(
-			"[goreadme](https://github.com/posener/goreadme) diff for %s file for this PR:\n\n%s",
+			"[goreadme](https://github.com/ldsec/goreadme) diff for %s file for this PR:\n\n%s",
 			path,
 			diff)
 	}
