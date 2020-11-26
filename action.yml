@@ -11,7 +11,6 @@ inputs:
     description: "Print Goreadme debug output. Set to any non empty value for true."
     required: false
   email:
-    default: posener@gmail.com
     description: "Email for commit message."
     required: false
   github-token:
@@ -19,6 +18,9 @@ inputs:
     required: false
   import-path:
     description: "Override package import path."
+    required: false
+  destination-path:
+    description: "Override package destination path."
     required: false
   title:
     description: "Override readme title. Default is package name."
@@ -77,6 +79,7 @@ runs:
     github-token: "${{ inputs.github-token }}"
   args:
   - "-import-path=${{ inputs.import-path }}"
+  - "-destination-path=${{ inputs.destination-path }}"
   - "-title=${{ inputs.title }}"
   - "-recursive=${{ inputs.recursive }}"
   - "-functions=${{ inputs.functions }}"
